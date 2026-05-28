@@ -4,9 +4,13 @@ from .settings import * # Imports all your local settings first
 
 # 1. SECURITY: Force DEBUG to False in production
 DEBUG = False
+SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # 2. HOSTS: Render dynamically assigns a hostname. We capture it from the environment.
-ALLOWED_HOSTS = [os.environ.get('RENDER_EXTERNAL_HOSTNAME', '*')]
+RENDER_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
+if RENDER_HOSTNAME:
+    ALLOWED_HOSTS.append(RENDER_HOSTNAME)
+    CSRF_TRUSTED_ORIGINS = [f'https://{RENDER_HOSTNAME}']
 
 # 3. DATABASE: Render provides a single 'DATABASE_URL'. dj_database_url parses it automatically.
 DATABASES = {
@@ -17,7 +21,14 @@ DATABASES = {
 }
 
 # 4. STATIC FILES: Enable WhiteNoise compression and caching for production
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+STORAGES = {
+    "default": {
+        "BACKEND": "django.core.files.storage.FileSystemStorage",
+    },
+    "staticfiles": {
+        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
+    },
+}
 
 # 5. CORS: Restrict API access to your exact frontend URL
 CORS_ALLOW_ALL_ORIGINS = False
