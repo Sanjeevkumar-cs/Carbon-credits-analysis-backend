@@ -154,8 +154,3 @@ fi
 This backend is designed for **scalable ESG carbon credit analysis**, with robust handling of **multi-tenant data**, **messy CSV uploads**, and **secure deployment** on Render.  
 It is production-ready, with lessons learned baked into the architecture for **smooth deployments** and **error-free API operations**.
 
-```
-
-This version is **clean, professional, and styled for a README**. It uses consistent headings, clear sections, and concise explanations.
-
-```
