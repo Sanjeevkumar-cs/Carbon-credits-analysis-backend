@@ -115,8 +115,8 @@ fi
   - `SECRET_KEY`: Secure random string
   - `DJANGO_SETTINGS_MODULE`: `config.deployment_settings`
   - `CREATE_SUPERUSER`: `True` _(set to False after first deployment)_
-  - `DJANGO_SUPERUSER_USERNAME`: `admin`
-  - `DJANGO_SUPERUSER_EMAIL`: `admin@example.com`
+  - `DJANGO_SUPERUSER_USERNAME`: 
+  - `DJANGO_SUPERUSER_EMAIL`: 
   - `DJANGO_SUPERUSER_PASSWORD`: `[Your secure password]`
 
 ---
